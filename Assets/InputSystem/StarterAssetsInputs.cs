@@ -15,6 +15,11 @@ namespace StarterAssets
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
+		
+		[Header("UI Input")]
+		public bool toggleDisclaimer;
+		public bool exitDemo;
+
 
 #if !UNITY_IOS || !UNITY_ANDROID
 		[Header("Mouse Cursor Settings")]
@@ -45,6 +50,16 @@ namespace StarterAssets
 		{
 			SprintInput(value.isPressed);
 		}
+		
+		public void OnToggleDisclaimer(InputValue value)
+		{
+			DisclaimerInput(value.isPressed);
+		}
+		
+		public void OnExit(InputValue value)
+		{
+			ExitDemo(value.isPressed);
+		}
 #else
 	// old input sys if we do decide to have it (most likely wont)...
 #endif
@@ -68,6 +83,16 @@ namespace StarterAssets
 		public void SprintInput(bool newSprintState)
 		{
 			sprint = newSprintState;
+		}
+		
+		public void DisclaimerInput(bool newDisclaimerState)
+		{
+			toggleDisclaimer = newDisclaimerState;
+		}
+		
+		public void ExitDemo(bool exitDemoState)
+		{
+			exitDemo = exitDemoState;
 		}
 
 #if !UNITY_IOS || !UNITY_ANDROID

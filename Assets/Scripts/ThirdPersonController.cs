@@ -100,7 +100,7 @@ namespace StarterAssets
 			if (_mainCamera == null)
 			{
 				_mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
-				_cinemachineTargetYaw = -125;
+				_cinemachineTargetYaw = -124;
 			}
 		}
 
@@ -125,6 +125,8 @@ namespace StarterAssets
 			JumpAndGravity();
 			GroundedCheck();
 			Move();
+			if (_input.exitDemo)
+				Application.Quit();
 		}
 
 		private void LateUpdate()
