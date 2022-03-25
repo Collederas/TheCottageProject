@@ -6,7 +6,7 @@ public class LightIntensityModifier : MonoBehaviour
 {
     Light LightComp;
 
-    [FormerlySerializedAs("IntensityMultiplier")] [SerializeField, Range(1, 5)] float intensityMultiplier;
+    [FormerlySerializedAs("IntensityMultiplier")] [SerializeField, Range(0, 1)] float speed = 0.8f;
     void Awake()
     {
         LightComp = GetComponent<Light>();
@@ -14,6 +14,6 @@ public class LightIntensityModifier : MonoBehaviour
 
     private void Update()
     {
-        LightComp.intensity = Mathf.Sin(Time.time * intensityMultiplier) + 1f;
+        LightComp.intensity = Mathf.Abs(Mathf.Sin(Time.time * speed)) + 1f;
     }
 }
